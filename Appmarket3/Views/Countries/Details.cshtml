@@ -4,21 +4,88 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+<h3>Detalles</h3>
 
-<div>
-    <h4>Country</h4>
+<div>   
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            # Departamentos
+        </dt>
+        <dd class="col-sm-10 ">
+            @Html.DisplayFor(model => model.DepartmentsNumber)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="AddDepartment" asp-route-id="@Model.Id" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Crear Depto</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editar País</a>
+    <a asp-action="Index" class="btn btn-success">Cancelar</a>
 </div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Departamentos</h4>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover table-responsive table-striped" id="MyTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Departments.FirstOrDefault().Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Departments.FirstOrDefault().CitiesNumber)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Departments)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CitiesNumber)
+                                </td>
+                                <td>
+                                    <a asp-action="EditDepartment" asp-route-id="@item.Id" class="btn btn-warning"><i class="glyphicon glyphicon-pencil">Editar Depto</i></a>
+                                    <a asp-action="DetailsDepartment" asp-route-id="@item.Id" class="btn btn-info"><i class="glyphicon glyphicon-align-justify">Ver Detalles</i></a>
+                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="glyphicon glyphicon-trash">Eliminar Depto</i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_DeleteDialog" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="/js/deleteDialog.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable();
+
+            // Delete item
+            sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Countries/DeleteDepartment/', false);
+        });
+    </script>
+}

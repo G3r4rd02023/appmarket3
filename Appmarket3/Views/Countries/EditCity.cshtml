@@ -1,4 +1,5 @@
-﻿@model Appmarket3.Data.Entities.Country
+﻿
+@model Appmarket3.Data.Entities.City
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,24 +11,25 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="EditCity">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="IdDepartment" />
+
+            <partial name="_City" />
+
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
-                <a asp-action="Index" class=" btn btn-success">Cancelar</a>
+                <a asp-action="DetailsDepartment" asp-route-id="@Model.IdDepartment" class="btn btn-success">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 <hr />
 
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+
+

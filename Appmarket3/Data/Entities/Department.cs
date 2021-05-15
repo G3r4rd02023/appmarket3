@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,6 +19,9 @@ namespace Appmarket3.Data.Entities
         public string Name { get; set; }
 
         public virtual ICollection<City> Cities { get; set; }
+
+        [NotMapped]
+        public int IdCountry { get; set; }
 
         public virtual Country Country { get; set; }
 
