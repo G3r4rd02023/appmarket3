@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appmarket3", "Appmarket3\Appmarket3.csproj", "{CE1F7F26-36CC-4AFF-9BF8-D64B6CCD66DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE1F7F26-36CC-4AFF-9BF8-D64B6CCD66DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE1F7F26-36CC-4AFF-9BF8-D64B6CCD66DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE1F7F26-36CC-4AFF-9BF8-D64B6CCD66DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE1F7F26-36CC-4AFF-9BF8-D64B6CCD66DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F7FA3E7-A44F-4DFD-85C6-1F696B731913}
+	EndGlobalSection
+EndGlobal
